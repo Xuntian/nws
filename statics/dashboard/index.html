@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="/statics/assets/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/statics/assets/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/statics/assets/css/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/statics/assets/css/style.css" />
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.js"></script>
+<script src="/statics/dashboard/js/app.js"></script>
+<title>KeepWork后台管理</title>
+</head>
+<body ng-app="App_Dashboard" ng-controller="mainCtrl">
+<!--header-->
+<header class="navbar-wrapper">
+	<div class="navbar navbar-fixed-top">
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="#">KeepWork 后台管理</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="#"></a> 
+			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+				
+				<ul class="cl">
+					<li> 超级管理员 </li>
+					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i>消息</i></a> </li>
+					<!-- <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>  -->
+					<li><a href="#">退出</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+<!--header-->
+
+<!--menu-->
+<aside class="Hui-aside">
+	
+	<div class="menu_dropdown bk_2">
+		<dl id="menu-containers">
+			<dt><i class="Hui-iconfont"></i><strong> 管理员</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - 账户管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+		</dl>
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont"></i><strong> KeepWork</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showUserView()"><i class="Hui-iconfont"></i> - 用户<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showWebsiteView()"><i class="Hui-iconfont"></i> - 站点<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showDomainView()"><i class="Hui-iconfont"></i> - 域名<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showVIPView()"><i class="Hui-iconfont"></i> - VIP<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showBigFileView()"><i class="Hui-iconfont"></i> - 大文件审核<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showSensitiveWordsView()"><i class="Hui-iconfont"></i> - 敏感词管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showOauthView()"><i class="Hui-iconfont"></i> - Oauth管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showTemplateView()"><i class="Hui-iconfont"></i> - 模板管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showDemoView()"><i class="Hui-iconfont"></i> - Demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+		</dl>
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont"></i><strong> 数据统计</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+			<dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+		</dl>
+	</div>
+</aside>
+<!--/menu-->
+
+<section class="Hui-article-box">
+	<nav class="breadcrumb"> 
+		<span class="c-999 en">&gt;</span>
+		<span class="c-666">Keepwork管理</span> 
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">刷新</i></a>
+	</nav>
+	<div class="Hui-article">
+		<article class="cl pd-20" ng-show='stageView=="manager"'>
+			<p class="f-20 text-success"></p>
+			<table class="table table-border table-bordered table-bg">
+				<thead>
+					<tr>
+						<th colspan="7" scope="col">账户列表</th>
+					</tr>
+					<tr class="text-c">
+						<th>账户名</th>
+						<th>邮箱</th>
+						<th>手机号</th>
+						<th>权限等级</th>
+						<th>状态</th>
+						<th>修改时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-c">
+						<td>1</td>
+						<td>2</td>
+						<td>9</td>
+						<td>0</td>
+						<td>8</td>
+						<td>20</td>
+					</tr>
+				</tbody>
+			</table>
+<!--
+			<table class="table table-border table-bordered table-bg mt-20">
+				<thead>
+					<tr>
+						<th colspan="2" scope="col">服务器信息</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th width="30%">服务器计算机名</th>
+						<td><span id="lbServerName">http://127.0.0.1/</span></td>
+					</tr>
+					<tr>
+						<td>当前SessionID </td>
+						<td>gznhpwmp34004345jz2q3l45</td>
+					</tr>
+					<tr>
+						<td>当前系统用户名 </td>
+						<td>NETWORK SERVICE</td>
+					</tr>
+				</tbody>
+			</table>
+		</article>
+-->
+		<article class="cl pd-20" ng-show='stageView=="user"'>
+			用户
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="website"'>
+			网站
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="domain"'>
+			域名
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="VIP"'>
+			VIP
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="bigfile"'>
+			大文件
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="sensitivewords"'>
+			敏感词
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="oauth"'>
+			Oauth
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="template"'>
+			模板
+			<p>{{asd}}</p>
+		</article>	
+		<article class="cl pd-20" ng-show='stageView=="demo"'>
+			demo
+			{{asd}}
+		</article>	
+		<!-- <footer class="footer"><p>Keepwork Dashboard</p></footer> -->
+	</div>
+</section>
+
+</body>
+</html>
