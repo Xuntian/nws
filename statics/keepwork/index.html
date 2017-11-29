@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KEEPWORK后台管理</title>
+
+    <!-- lib css -->
+    <link href="statics/keepwork/assets/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div ng-controller="mainController">
+    <!--<div ng-repeat="htmlContent in list track by $index">-->
+        <!--<wiki-block data-content="{{htmlContent}}" data-content-type="html"></wiki-block>-->
+    <!--</div>-->
+    <!--
+    <div id="editor"></div>
+    <wiki-html data-params="test"></wiki-html>
+    -->
+
+    <div >
+        <div id="__header__"></div>
+    </div>
+
+    <div style="z-index: 1" id="__mainContent__"></div>
+</div>
+<!-- lib脚本 -->
+<script data-main="statics/keepwork/js/main.js" src="statics/keepwork/js/lib/requirejs/require.js"></script>
+</body>
+</html>
