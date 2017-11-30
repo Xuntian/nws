@@ -81,8 +81,8 @@ define([
         require([
             "directive/wikiblock",
             "statics/keepwork/js/app/controller/mainController",
-            "statics/keepwork/js/app/controller/headerController",
-            "statics/keepwork/js/app/controller/mainContentController",
+            //"statics/keepwork/js/app/controller/headerController",
+            //"statics/keepwork/js/app/controller/mainContentController",
         ], function () {
             angular.bootstrap(document, [app.appName]);
         });

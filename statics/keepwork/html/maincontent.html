@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="mainController">
 <!--menu-->
 <aside class="Hui-aside">
 	
@@ -33,7 +33,9 @@
 	<nav class="breadcrumb"> 
 		<span class="c-999 en">&gt;</span>
 		<span class="c-666">Keepwork管理</span> 
+		<!--
 		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">刷新</i></a>
+		-->
 	</nav>
 	<div class="Hui-article">
 		<article class="cl pd-20" ng-show='stageView=="manager"'>
@@ -88,7 +90,7 @@
 -->
 		</article>
 		<article class="cl pd-20" ng-show='stageView=="user"'>
-			用户\{{asd}}
+			用户{{stageView}}
 		</article>	
 		<article class="cl pd-20" ng-show='stageView=="website"'>
 			网站
