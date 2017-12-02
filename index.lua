@@ -17,4 +17,6 @@ nws.router("/t1", function(ctx)
 	ctx.response:send("asd")
 end)
 
-
+nws.router("/login", function(ctx)
+	ctx.response:
+end)

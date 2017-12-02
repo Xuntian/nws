@@ -8,24 +8,141 @@
 
     <!-- lib css -->
     <link href="statics/keepwork/assets/css/main.css" rel="stylesheet" type="text/css">
+    
 </head>
 <body>
 <div ng-controller="mainController">
-    <!--<div ng-repeat="htmlContent in list track by $index">-->
-        <!--<wiki-block data-content="{{htmlContent}}" data-content-type="html"></wiki-block>-->
-    <!--</div>-->
-    <!--
-    <div id="editor"></div>
-    <wiki-html data-params="test"></wiki-html>
-    -->
-
-    <div >
-        <div id="__header__"></div>
+    <div>
+        <header class="navbar-wrapper">
+            <div class="navbar navbar-fixed-top">
+                <div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="#">KeepWork 后台管理</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="#"></a> 
+                    <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+                    <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs" ng-show="isLogined">
+                        <ul class="cl">
+                            <li> 超级管理员 </li>
+                            <li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i>消息</i></a> </li>
+                            <li><a ng-click="logout()">退出</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
     </div>
 
-    <div style="z-index: 1" id="__mainContent__"></div>
+    <div ng-show="!isLogined">
+        <div class="login-form" >
+            <form class="clearfix">
+                <label>登录账号</label>
+                <input type="text" class="form-control" name="email" placeholder="登录账号（推荐email或手机号）" ng-model="username">
+                <label>密码</label>
+                <input type="password" class="form-control" name="password" placeholder="密码" ng-model="password">
+                <span id="total-err" class="visible-hidden text-danger">*{{errMsg}}</span>
+                <a ng-click="login()" class="btn btn-primary btn-block btn-lg">登录</a>
+            </form>
+        </div>
+    </div>
+    
+    <div ng-show="isLogined">
+        <!--menu-->
+        <aside class="Hui-aside">
+            
+            <div class="menu_dropdown bk_2">
+                <dl id="menu-containers">
+                    <dt><i class="Hui-iconfont"></i><strong> 管理员</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - 账户管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                </dl>
+                <dl id="menu-article">
+                    <dt><i class="Hui-iconfont"></i><strong> KeepWork</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showUserView()"><i class="Hui-iconfont"></i> - 用户<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showWebsiteView()"><i class="Hui-iconfont"></i> - 站点<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showDomainView()"><i class="Hui-iconfont"></i> - 域名<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showVIPView()"><i class="Hui-iconfont"></i> - VIP<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showBigFileView()"><i class="Hui-iconfont"></i> - 大文件审核<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showSensitiveWordsView()"><i class="Hui-iconfont"></i> - 敏感词管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showOauthView()"><i class="Hui-iconfont"></i> - Oauth管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showTemplateView()"><i class="Hui-iconfont"></i> - 模板管理<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showDemoView()"><i class="Hui-iconfont"></i> - Demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                </dl>
+                <dl id="menu-article">
+                    <dt><i class="Hui-iconfont"></i><strong> 数据统计</strong><i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                    <dt ng-click="showManagerView()"><i class="Hui-iconfont"></i> - demo<i class="Hui-iconfont menu_dropdown-arrow"></i></dt>
+                </dl>
+            </div>
+        </aside>
+        <!--/menu-->
+            
+        <section class="Hui-article-box">
+            <nav class="breadcrumb"> 
+                <span class="c-999 en">&gt;</span>
+                <span class="c-666">Keepwork管理</span> 
+                <!--
+                <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">刷新</i></a>
+                -->
+            </nav>
+            <div class="Hui-article">
+                <article class="cl pd-20" ng-show='stageView=="manager"'>
+                    <p class="f-20 text-success"></p>
+                    <table class="table table-border table-bordered table-bg">
+                        <thead>
+                            <tr>
+                                <th colspan="7" scope="col">账户列表</th>
+                            </tr>
+                            <tr class="text-c">
+                                <th>账户名</th>
+                                <th>邮箱</th>
+                                <th>手机号</th>
+                                <th>权限等级</th>
+                                <th>状态</th>
+                                <th>修改时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-c">
+                                <td>1</td>
+                                <td>2</td>
+                                <td>9</td>
+                                <td>0</td>
+                                <td>8</td>
+                                <td>20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+        
+                </article>
+                <article class="cl pd-20" ng-show='stageView=="user"'>
+                    用户{{asd}}
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="website"'>
+                    网站
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="domain"'>
+                    域名
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="VIP"'>
+                    VIP
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="bigfile"'>
+                    大文件
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="sensitivewords"'>
+                    敏感词
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="oauth"'>
+                    Oauth
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="template"'>
+                    模板
+                </article>	
+                <article class="cl pd-20" ng-show='stageView=="demo"'>
+                    demo
+                </article>	
+                <!-- <footer class="footer"><p>Keepwork Dashboard</p></footer> -->
+            </div>
+        </section>
+    </div>
 </div>
-<!-- lib脚本 -->
 <script data-main="statics/keepwork/js/main.js" src="statics/keepwork/js/lib/requirejs/require.js"></script>
 </body>
 </html>

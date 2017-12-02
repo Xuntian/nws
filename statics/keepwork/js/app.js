@@ -41,7 +41,7 @@ define([
             app.ng_app.controller(name, constructor);
         }
         app.ng_objects.component_map[name] = constructor;
-    };
+};
 
     // 注册组件
     app.registerComponent = function (name, option) {
@@ -81,8 +81,6 @@ define([
         require([
             "directive/wikiblock",
             "statics/keepwork/js/app/controller/mainController",
-            //"statics/keepwork/js/app/controller/headerController",
-            //"statics/keepwork/js/app/controller/mainContentController",
         ], function () {
             angular.bootstrap(document, [app.appName]);
         });
