@@ -1,14 +1,45 @@
 
 define([
 ], function () {
-    app.registerController("mainController", ['$rootScope','$scope', function ($rootScope, $scope) {
+    app.registerController("mainController", ['$rootScope','$scope', '$http', '$auth', function ($rootScope, $scope, $http, $auth) {
 		
-		$scope.isLogined = false;
+		$scope.urlPrefix = "http://127.0.0.1:8080/"
+		$scope.username = "";
+		$scope.password = "";
+		$scope.isLogined = $auth.isAuthenticated();
+		$scope.errMsg = "";
 		$scope.login = function(){
-			$scope.isLogined = true;
+			if(!$auth.isAuthenticated()){
+				if($scope.username != "" && $scope.password != ""){
+					$http({
+						method: 'POST',
+						url: $scope.urlPrefix + 'admin/login',
+						data: {
+							username: $scope.username,
+							password: $scope.password,
+						}
+					}).then(function successCallback(response) {
+						$auth.setToken(response.data.token);
+						//Account.setUser();
+						if(response.data.error == "登录成功"){
+							$scope.isLogined = true;
+						}else{
+							$scope.errMsg = response.data.error;
+						}
+					}, function errorCallback(){
+						$scope.errMsg = "访问太频繁，请稍后尝试";
+					});
+				}else{
+					$scope.errMsg = "账户名或秘密不能为空";
+				}
+			}	
 		}
 		$scope.logout = function(){
-			$scope.isLogined = false;
+			//$scope.isLogined = false;
+			$auth.logout();
+			$auth.removeToken();
+			$scope.isLogined = $auth.isAuthenticated();
+			$scope.errMsg = "";
 		}
 
         $scope.asd = "asd";	

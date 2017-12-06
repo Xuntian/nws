@@ -31,12 +31,12 @@
 
     <div ng-show="!isLogined">
         <div class="login-form" >
-            <form class="clearfix">
+            <form class="clearfix" style="width:50%;">
                 <label>登录账号</label>
-                <input type="text" class="form-control" name="email" placeholder="登录账号（推荐email或手机号）" ng-model="username">
+                <input type="text" class="form-control" name="email" placeholder="登录账号" ng-model="username">
                 <label>密码</label>
                 <input type="password" class="form-control" name="password" placeholder="密码" ng-model="password">
-                <span id="total-err" class="visible-hidden text-danger">*{{errMsg}}</span>
+                <span id="total-err" class="text-danger">{{errMsg}}</span>
                 <a ng-click="login()" class="btn btn-primary btn-block btn-lg">登录</a>
             </form>
         </div>

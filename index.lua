@@ -1,8 +1,10 @@
 
-
+local admin = nws.import("model/admin")
+local adminController = nws.import("controller/adminController")
 -- 业务代码开始
 nws.router("/", function(ctx)
 	ctx.response:send_file("statics/keepwork/index.html")
+
 end)
 
 nws.router("/login", function(ctx)
@@ -14,9 +16,12 @@ nws.router("/demo", function(ctx)
 end)
 
 nws.router("/t1", function(ctx)
-	ctx.response:send("asd")
+	local sum = "sum demo"
+	ctx.response:send(sum)
 end)
 
-nws.router("/login", function(ctx)
-	ctx.response:
-end)
+nws.router("/admin", adminController)
+
+--[[ nws.router("/login", function(ctx)
+	ctx.response:send("login pages")
+end) ]]
