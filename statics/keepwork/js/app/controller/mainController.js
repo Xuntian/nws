@@ -3,7 +3,7 @@ define([
 ], function () {
     app.registerController("mainController", ['$rootScope','$scope', '$http', '$auth', function ($rootScope, $scope, $http, $auth) {
 		
-		$scope.urlPrefix = "http://127.0.0.1:8080/"
+		$scope.urlPrefix = "http://127.0.0.1/"
 		$scope.username = "";
 		$scope.password = "";
 		$scope.isLogined = $auth.isAuthenticated();
@@ -42,7 +42,7 @@ define([
 			$scope.errMsg = "";
 		}
 
-        $scope.asd = "asd";	
+        $scope.asd = "asd111";
 		$scope.stageView = "manager";	
 		$scope.showManagerView = function(){
 			$scope.stageView = "manager";
