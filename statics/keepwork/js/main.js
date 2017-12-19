@@ -5,7 +5,7 @@
 'use strict';
 
 (function (win) {
-    var pathPrefix = "statics/keepwork/";
+    var pathPrefix = "/keepwork/";
     var jsPathPrefix = pathPrefix + 'js/';
     var libPathPrefix = pathPrefix + 'js/lib/';
     var appPathPrefix = pathPrefix + 'js/app/';

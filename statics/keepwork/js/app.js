@@ -3,7 +3,7 @@
  */
 
 define([
-    "statics/keepwork/js/config",
+    "keepwork/js/config",
     'angular',
     'angular-ui-bootstrap',
     'satellizer',
@@ -80,14 +80,11 @@ define([
     app.bootstrap = function () {
         require([
             "directive/wikiblock",
-            "statics/keepwork/js/app/controller/mainController",
+            "keepwork/js/app/controller/mainController",
         ], function () {
             angular.bootstrap(document, [app.appName]);
         });
     }
-
-
-
 
     window.app = app;
     return app;

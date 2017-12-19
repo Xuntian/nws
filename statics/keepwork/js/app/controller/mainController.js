@@ -3,7 +3,7 @@ define([
 ], function () {
     app.registerController("mainController", ['$rootScope','$scope', '$http', '$auth', function ($rootScope, $scope, $http, $auth) {
 		
-		$scope.urlPrefix = "http://127.0.0.1/"
+		$scope.urlPrefix = "http://127.0.0.1:8888/"
 		$scope.username = "";
 		$scope.password = "";
 		$scope.isLogined = $auth.isAuthenticated();

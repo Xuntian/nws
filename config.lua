@@ -15,7 +15,7 @@ local config = {
 		--db_type = "mysql",  --  数据库类型: tabledb, mysql
 
 		tabledb = {             -- tabledb 数据库配置
-			path = "database/", -- 数据库路径
+			path = "temp/test_raft_database/", -- 数据库路径
 			-- sync_mode = true,   -- 是否为异步模式
 		},
 
